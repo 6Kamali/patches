@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patches Family Restaurant | Brandon, MB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #c0392b; /* Warm Red */
+            --secondary: #2c3e50; /* Dark Slate */
+            --accent: #f39c12; /* Golden Honey */
+            --light: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+        body { background-color: var(--light); color: var(--secondary); line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 2rem; }
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--secondary); 
+            font-weight: 600; 
+            transition: 0.3s; 
+            cursor: pointer;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { background: #a93226; transform: translateY(-2px); }
+
+        /* Page Content Handling */
+        .page { display: none; padding: 4rem 10%; animation: fadeIn 0.5s ease; }
+        .active-page { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Menu Grid */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .menu-category { background: white; padding: 2rem; border-radius: 10px; box-shadow: var(--shadow); }
+        .menu-category h3 { color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        .menu-item { display: flex; justify-content: space-between; margin-bottom: 1rem; }
+
+        /* Reviews Section */
+        .review-card { background: white; padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem; border-left: 5px solid var(--accent); box-shadow: var(--shadow); }
+        .stars { color: var(--accent); margin-bottom: 0.5rem; }
+
+        /* Info Grid */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .info-box i { font-size: 2rem; color: var(--primary); margin-bottom: 1rem; }
+
+        /* Footer */
+        footer { background: var(--secondary); color: white; padding: 3rem 10%; text-align: center; }
+        .footer-content { margin-bottom: 1rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Mobile menu could be added here */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Patches Restaurant</div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('home')">Home</a></li>
+            <li><a onclick="showPage('menu')">Menu</a></li>
+            <li><a onclick="showPage('reviews')">Reviews</a></li>
+            <li><a onclick="showPage('about')">About & Contact</a></li>
+        </ul>
+    </nav>
+
+    <div id="home" class="page active-page">
+        <section class="hero">
+            <h1>Triple B: Best Breakfast Brandon</h1>
+            <p>Quality service, friendly staff, and the best pan-fried potatoes in Manitoba.</p>
+            <div>
+                <button class="btn" onclick="showPage('menu')">View Menu</button>
+                <button class="btn" style="background:transparent; border: 2px solid white; margin-left: 10px;" onclick="showPage('about')">Find Us</button>
+            </div>
+        </section>
+
+        <section style="margin-top: 4rem;">
+            <div class="info-grid">
+                <div class="info-box">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Home Cooked</h3>
+                    <p>Experience that "Ma and Pa" diner feel with classic recipes you know and love.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-clock"></i>
+                    <h3>Early Bird</h3>
+                    <p>Open early to serve you the freshest breakfast in the Redwood Plaza.</p>
+                </div>
+                <div class="info-box">
+                    <i class="fas fa-wallet"></i>
+                    <h3>Great Value</h3>
+                    <p>Delicious, high-quality meals at prices that are easy on the wallet.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="menu" class="page">
+        <h2 style="text-align:center; font-size: 2.5rem;">Our Menu</h2>
+        <p style="text-align:center; margin-bottom: 3rem;">Classic breakfast and lunch favorites, served fresh.</p>
+        
+        <div class="menu-grid">
+            <div class="menu-category">
+                <h3>Breakfast Classics</h3>
+                <div class="menu-item"><span>Pancake, Eggs & Bacon</span> <strong>$12.50</strong></div>
+                <div class="menu-item"><span>French Toast</span> <strong>$10.95</strong></div>
+                <div class="menu-item"><span>Classic 2-Egg Breakfast</span> <strong>$9.50</strong></div>
+                <p><small>*Includes our famous pan-fried potatoes.</small></p>
+            </div>
+            <div class="menu-category">
+                <h3>Lunch Specials</h3>
+                <div class="menu-item"><span>Chicken Neptune</span> <strong>$16.50</strong></div>
+                <div class="menu-item"><span>Chicken Burger & Fries</span> <strong>$13.95</strong></div>
+                <div class="menu-item"><span>Classic Cheeseburger</span> <strong>$12.50</strong></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="reviews" class="page">
+        <h2 style="text-align:center; margin-bottom: 2rem;">What the Locals Say</h2>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Fantastic little family restaurant. You don't see ma and pa restaurants around like this anymore. You walk in and feel like you're back in the 80s."</p>
+            <br><strong>- Kaci 101</strong>
+        </div>
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Triple B!! Best breakfast Brandon. Service was spot on. Food came out fast and perfectly done. Eggs as ordered, bacon crisp."</p>
+            <br><strong>- Kennie</strong>
+        </div>
+    </div>
+
+    <div id="about" class="page">
+        <div class="info-grid">
+            <div class="info-box">
+                <h2>Visit Us</h2>
+                <p><i class="fas fa-map-marker-alt"></i> 223 18th St N, Brandon, MB R7A 2V8</p>
+                <p>Located in Redwood Plaza</p>
+                <br>
+                <h3>Hours</h3>
+                <p>Mon - Sat: 7:00 AM - 8:00 PM</p>
+                <p>Sun: 8:00 AM - 4:00 PM</p>
+            </div>
+            <div class="info-box">
+                <h2>Get in Touch</h2>
+                <p><i class="fas fa-phone"></i> (204) 727-6517</p>
+                <br>
+                <a href="https://m.facebook.com" class="btn">Follow us on Facebook</a>
+            </div>
+        </div>
+        <div style="margin-top: 3rem; background: #ddd; height: 300px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+            <p>[ Interactive Google Map Placeholder ]</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Patches Family Restaurant | Brandon, Manitoba</p>
+            <p>Made with heart for the local community.</p>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active-page'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // Scroll to top
+            window.scrollTo(0,0);
+        }
+    </script>
+</body>
+</html>
